@@ -145,3 +145,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 CORS_ALLOWED_ALL_ORIGINS = True
+
+# Activate Django-Heroku
+django_heroku.settings(locals())
