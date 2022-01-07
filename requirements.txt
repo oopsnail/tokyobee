@@ -87,6 +87,7 @@ pynput==1.7.4
 pyOpenSSL==21.0.0
 pyparsing==2.4.7
 pyperclip==1.8.2
+pypiwin32==223
 PyRect==0.1.4
 pyrsistent==0.18.0
 PyScreeze==0.1.28
