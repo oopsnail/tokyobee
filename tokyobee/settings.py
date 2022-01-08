@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
-# import django_heroku
-import os
+import django_heroku
+import dj_database_url
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-w#fa-6(cnqa!+8brv+ih=)-=+6a%z)7_=j&mku$^bcekfy1k3r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['cococity.pythonanywhere.com']
+ALLOWED_HOSTS = ['*']
 
 # '127.0.0.1', '.herokuapp.com'
 
@@ -45,8 +45,8 @@ INSTALLED_APPS = [
 
     'base.apps.BaseConfig',
 
-    # 'rest_framework',
-    # "corsheaders",
+    'rest_framework',
+    "corsheaders",
 ]
 
 AUTH_USER_MODEL = 'base.User'
@@ -61,7 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'tokyobee.urls'
@@ -91,10 +91,7 @@ WSGI_APPLICATION = 'tokyobee.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config()
 }
 
 
@@ -141,7 +138,7 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -152,4 +149,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 CORS_ALLOWED_ALL_ORIGINS = True
 
 # Activate Django-Heroku
-# django_heroku.settings(locals())
+django_heroku.settings(locals())
