@@ -1,7 +1,7 @@
 {% for room in rooms %}
 <div class="roomListRoom">
   <div class="roomListRoom__header">
-    <a href="{% url 'user-profile' user.id %}" class="roomListRoom__author">
+    <a href="{% url 'user-profile' room.host.id %}" class="roomListRoom__author">
       {% comment %} message.user.id 하면 오류가 남. 왜?? {% endcomment %}
       <div class="avatar avatar--small">
         <img src="{{room.host.avatar.url}}" />
