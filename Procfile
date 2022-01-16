@@ -1,0 +1,1 @@
+web gunicorn tokyobee.wsgi:application --log-file
