@@ -215,7 +215,10 @@ def topicsPage(request):
     topics = Topic.objects.filter(name__icontains=q)
     return render(request, 'base/topics.html', {'topics': topics})
 
-
 def activityPage(request):
-    room_messages = Message.objects.all
-    return render(request, 'base/activity.html', {'room_messages': room_messages})
+    page = request.GET.get('page', '1')
+    room_messages = Message.objects.order_by('-created')
+
+    paginator = Paginator(room_messages, 3)
+    page_obj = paginator.get_page(page)
+    return render(request, 'base/activity.html', {'room_messages': page_obj})
