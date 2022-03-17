@@ -130,7 +130,7 @@
                 </div>
 
                 {% if request.user == message.user %}
-                <a herf="{% url 'delete-message' message.id %}">
+                <a href="{% url 'delete-message' message.id %}">
                   <div class="thread__delete">
                     <svg
                       version="1.1"
